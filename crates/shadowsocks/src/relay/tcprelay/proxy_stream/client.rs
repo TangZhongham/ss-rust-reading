@@ -89,6 +89,7 @@ where
     }
 
     /// Connect to target `addr` via shadowsocks' server configured by `svr_cfg`, maps `TcpStream` to customized stream with `map_fn`
+    /// 核心方法
     pub async fn connect_with_opts_map<A, F>(
         context: SharedContext,
         svr_cfg: &ServerConfig,

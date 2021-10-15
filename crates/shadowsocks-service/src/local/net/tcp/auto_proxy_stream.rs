@@ -34,6 +34,7 @@ pub enum AutoProxyClientStream {
 
 impl AutoProxyClientStream {
     /// Connect to target `addr` via shadowsocks' server configured by `svr_cfg`
+    /// 核心方法，aead 加密就在这里
     pub async fn connect<A>(
         context: Arc<ServiceContext>,
         server: &ServerIdent,

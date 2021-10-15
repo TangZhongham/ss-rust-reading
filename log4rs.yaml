@@ -11,11 +11,12 @@ root:
   level: trace
   appenders:
     - stdout
+    - requests
 loggers:
   app::backend::db:
     level: info
   app::requests:
-    level: info
+    level: trace
     appenders:
       - requests
     additive: false
