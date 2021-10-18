@@ -37,7 +37,7 @@ impl CopyBuffer {
             buf: vec![0; buffer_size].into_boxed_slice(),
         }
     }
-
+    // 真正写数据的方法
     fn poll_copy<R, W>(
         &mut self,
         cx: &mut Context<'_>,
@@ -220,7 +220,8 @@ where
     B: AsyncRead + AsyncWrite + Unpin + ?Sized,
 {
     type Output = io::Result<(u64, u64)>;
-
+    
+    // 重写了 future 的 poll 方法
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         // Unpack self into mut refs to each field to avoid borrow check issues.
         let CopyBidirectionalProj {
@@ -229,7 +230,7 @@ where
             a_to_b,
             b_to_a,
         } = self.project();
-
+        // 核心方法
         let poll_a_to_b = transfer_one_direction(cx, a_to_b, a.as_mut(), b.as_mut())?;
         let poll_b_to_a = transfer_one_direction(cx, b_to_a, b.as_mut(), a.as_mut())?;
 
