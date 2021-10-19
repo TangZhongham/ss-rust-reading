@@ -202,6 +202,7 @@ where
                     // before IO completion.
                     *(this.state) = ProxyClientStreamWriteState::Connecting(buffer);
                 }
+                // connecting 连接中
                 ProxyClientStreamWriteState::Connecting(ref buffer) => {
                     let n = ready!(this.stream.poll_write_encrypted(cx, buffer))?;
 
@@ -220,6 +221,7 @@ where
                     // This could be achieved by calling poll_write with an empty input buffer.
                     return Ok(buf.len()).into();
                 }
+                // connected 连接成功
                 ProxyClientStreamWriteState::Connected => {
                     return this.stream.poll_write_encrypted(cx, buf);
                 }
