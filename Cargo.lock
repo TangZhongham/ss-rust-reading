@@ -34,9 +34,9 @@ checksum = "dabe5a181f83789739c194cbe5a897dde195078fac08568d09221fd6137a7ba8"
 
 [[package]]
 name = "arc-swap"
-version = "1.4.0"
+version = "1.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e6df5aef5c5830360ce5218cecb8f018af3438af5686ae945094affc86fdec63"
+checksum = "bddcadddf5e9015d310179a59bb28c4d4b9920ad0f11e8e14dbadf654890c9a6"
 
 [[package]]
 name = "async-trait"
@@ -1549,7 +1549,7 @@ dependencies = [
 name = "shadowsocks"
 version = "1.12.0"
 dependencies = [
- "arc-swap 1.4.0",
+ "arc-swap 1.6.0",
  "async-trait",
  "base64",
  "bloomfilter",
@@ -1620,7 +1620,7 @@ dependencies = [
 name = "shadowsocks-service"
 version = "1.12.0"
 dependencies = [
- "arc-swap 1.4.0",
+ "arc-swap 1.6.0",
  "async-trait",
  "byte_string",
  "byteorder",
